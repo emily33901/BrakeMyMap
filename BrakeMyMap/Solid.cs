@@ -8,12 +8,14 @@ using BrakeMyMap;
 
 namespace BrakeMyMap
 {
-	class Solid
+	class Solid : IAsDynamic
 	{
 
 		public List<Side> Sides { get; private set; }
 
 		private VObject solid;
+
+		public dynamic Dynamic { get { return solid; } }
 
 		public Solid(VObject sol)
 		{

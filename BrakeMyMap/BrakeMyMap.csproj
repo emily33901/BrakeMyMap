@@ -48,6 +48,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
+    <Compile Include="IAsDynamic.cs" />
     <Compile Include="VdfExtensions.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="MaterialMap.cs" />

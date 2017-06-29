@@ -8,10 +8,11 @@ using BrakeMyMap;
 
 namespace BrakeMyMap
 {
-	class Side
+	class Side : IAsDynamic
 	{
 		private VObject side;
 
+		public dynamic Dynamic { get { return side; } }
 
 		private Plane plane;
 		private string material;

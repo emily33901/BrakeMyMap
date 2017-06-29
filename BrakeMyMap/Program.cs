@@ -21,7 +21,16 @@ namespace BrakeMyMap
 			{
 				// update the materials
 				solid.TopSide.Material = MaterialMap.ReplacementMaterial(solid.TopSide.Material);
+			}
 
+			foreach (var entity in map.Entities)
+			{
+				Console.WriteLine(entity.ClassName);
+
+				if (entity.ClassName == "func_instance" && entity.Dynamic.file.ToString().Contains("dropper"))
+				{
+					Console.WriteLine("{0}", entity.Dynamic);
+				}
 			}
 
 			Console.WriteLine("Writing new vmf...");

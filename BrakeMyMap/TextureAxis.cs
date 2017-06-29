@@ -14,6 +14,8 @@ namespace BrakeMyMap
 
 		public VValue Axis { get; set; }
 
+		public dynamic Dynamic { get { return Axis; } }
+
 		public TextureAxis(VValue axis)
 		{
 			

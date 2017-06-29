@@ -11,9 +11,11 @@ namespace BrakeMyMap
 {
 	// small wrapper for a vmf file
 	// also the wrapper for the world object within the map since that is the most commonly used
-	class Vmf
+	class Vmf : IAsDynamic
 	{
 		private VObject level;
+
+		public dynamic Dynamic { get { return level; } }
 
 		public Vmf(string mapname)
 		{
@@ -55,6 +57,24 @@ namespace BrakeMyMap
 				}
 
 				return solids.ToArray();
+			}
+		}
+
+		public Entity[] Entities
+		{
+			get
+			{
+				List<Entity> entities = new List<Entity>();
+
+				foreach (var child in level.Children())
+				{
+					if (child.Key == "entity")
+					{
+						entities.Add(new Entity(child.ToVObject()));
+					}
+				}
+
+				return entities.ToArray();
 			}
 		}
 

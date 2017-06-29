@@ -7,9 +7,12 @@ using Gameloop.Vdf;
 
 namespace BrakeMyMap
 {
-	class Plane
+	class Plane : IAsDynamic
 	{
 		private VValue TreeValue;
+
+		public dynamic Dynamic { get { return TreeValue; } }
+
 		private float[] topLeft;
 		private float[] topRight;
 		private float[] bottomLeft;
