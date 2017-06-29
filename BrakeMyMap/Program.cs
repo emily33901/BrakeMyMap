@@ -19,8 +19,12 @@ namespace BrakeMyMap
 			
 			foreach(var solid in map.Solids)
 			{
-				// update the materials
-				solid.TopSide.Material = MaterialMap.ReplacementMaterial(solid.TopSide.Material);
+				// update the materials for each side
+				foreach (var side in solid.Sides)
+				{
+					side.Material = MaterialMap.ReplacementMaterial(side.Material);
+
+				}
 			}
 
 			foreach (var entity in map.Entities)

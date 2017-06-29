@@ -51,11 +51,22 @@ namespace BrakeMyMap
 
 		static public string[] WhiteDirtyFloorTextures =
 		{
-			"TILE/WHITE_FLOOR_TILE004D",
-			"TILE/WHITE_FLOOR_TILE004D_VERTEX",
-			"TILE/WHITE_FLOOR_TILE004E",
+			"TILE/WHITE_WALL_TILE004D",
+			"TILE/WHITE_WALL_TILE004D_VERTEX",
+			"TILE/WHITE_WALL_TILE004E",
 		};
 
+		static public string[] WhiteCleanWallTextures =
+		{
+			"TILE/WHITE_WALL_TILE003A",
+		};
+
+		static public string[] WhiteDirtyWallTextures =
+		{
+			"TILE/WHITE_WALL_TILE004D",
+			"TILE/WHITE_WALL_TILE004E",
+			"TILE/WHITE_WALL_TILE004G",
+		};
 
 		static public string ReplacementMaterial(string name)
 		{
@@ -73,8 +84,11 @@ namespace BrakeMyMap
 			{
 				return WhiteDirtyFloorTextures[r.Next(WhiteDirtyFloorTextures.Count())];
 			}
-			
-			// TODO: WHITE WALL TEXTURES
+
+			if (WhiteCleanWallTextures.Contains(name))
+			{
+				return WhiteDirtyWallTextures[r.Next(WhiteDirtyWallTextures.Count())];
+			}
 
 			return name;
 		}
