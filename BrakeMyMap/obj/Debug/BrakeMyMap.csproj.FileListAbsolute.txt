@@ -1,0 +1,10 @@
+c:\users\joshua\documents\visual studio 2017\Projects\BrakeMyMap\BrakeMyMap\bin\Debug\BrakeMyMap.exe.config
+c:\users\joshua\documents\visual studio 2017\Projects\BrakeMyMap\BrakeMyMap\bin\Debug\BrakeMyMap.exe
+c:\users\joshua\documents\visual studio 2017\Projects\BrakeMyMap\BrakeMyMap\bin\Debug\BrakeMyMap.pdb
+c:\users\joshua\documents\visual studio 2017\Projects\BrakeMyMap\BrakeMyMap\bin\Debug\ValveKeyValue.dll
+c:\users\joshua\documents\visual studio 2017\Projects\BrakeMyMap\BrakeMyMap\bin\Debug\ValveKeyValue.xml
+c:\users\joshua\documents\visual studio 2017\Projects\BrakeMyMap\BrakeMyMap\obj\Debug\BrakeMyMap.csprojResolveAssemblyReference.cache
+c:\users\joshua\documents\visual studio 2017\Projects\BrakeMyMap\BrakeMyMap\obj\Debug\BrakeMyMap.exe
+c:\users\joshua\documents\visual studio 2017\Projects\BrakeMyMap\BrakeMyMap\obj\Debug\BrakeMyMap.pdb
+c:\users\joshua\documents\visual studio 2017\Projects\BrakeMyMap\BrakeMyMap\bin\Debug\Gameloop.Vdf.dll
+c:\users\joshua\documents\visual studio 2017\Projects\BrakeMyMap\BrakeMyMap\bin\Debug\Gameloop.Vdf.xml
