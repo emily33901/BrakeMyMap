@@ -36,11 +36,14 @@ namespace BrakeMyMap
 			set { material = value; UpdateTree(); }
 		}
 
+		// X axis of the texture
 		public TextureAxis UAxis
 		{
 			get { return uaxis; }
 			private set { uaxis = value; UpdateTree(); }
 		}
+
+		// Y axis of the texture
 
 		public TextureAxis VAxis
 		{
