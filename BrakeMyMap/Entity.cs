@@ -15,6 +15,7 @@ namespace BrakeMyMap
 		private int spawnFlags;
 		private List<Connection> connections;
 		private float[] origin;
+		private string fixupName;
 
 		public string ClassName
 		{
@@ -64,12 +65,48 @@ namespace BrakeMyMap
 
 		public Solid Solid { get; set; }
 
+
+		public bool IsInstance { get; set; }
+
+		// used to lookup vmfs for func_instances
+		public static string InstancePath { get; set; }
+
+
+		public bool HasFixupName
+		{
+			get
+			{
+				return FixupName != null;
+			}
+		}
+
+		public string FixupName
+		{
+			get { return fixupName; }
+			set
+			{
+				fixupName = value;
+				UpdateTree();
+			}
+		}
+
 		public Entity(VObject ent)
 		{
 			connections = new List<Connection>();
 			entity = ent;
 
 			classname = ent["classname"].ToString();
+
+			if (classname == "func_instance")
+			{
+				IsInstance = true;
+
+				if (InstancePath == null)
+				{
+					Console.Write("Enter the location of instances: ");
+					InstancePath = Console.ReadLine();
+				}
+			}
 
 			if (ent.ContainsKey("spawnflags"))
 			{
@@ -97,6 +134,10 @@ namespace BrakeMyMap
 				}
 			}
 
+			if (ent.ContainsKey("targetname"))
+			{
+				FixupName = ent["targetname"].ToString();
+			}
 		}
 
 		private void UpdateTree()

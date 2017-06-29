@@ -25,8 +25,6 @@ namespace BrakeMyMap
 
 			foreach (var entity in map.Entities)
 			{
-				Console.WriteLine(entity.ClassName);
-
 				if (entity.ClassName == "func_instance" && entity.Dynamic.file.ToString().Contains("dropper"))
 				{
 					Console.WriteLine("{0}", entity.Dynamic);

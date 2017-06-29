@@ -12,24 +12,72 @@ namespace BrakeMyMap
 	{
 		private VProperty connection;
 		private string output;
-		private string _event;
+		private string targetEntity;
+		private string input;
+		private float delay;
+		private int timesToFire;
+		private string parameter;
+
+		public bool IsInstance { get; set; }
 
 		// the output name from the entity aka "OnTrigger"
+		// should contain the "instance:entityname" aswell as the actual trigger
 		public string Output
 		{
 			get { return output; }
-			set { output = value;
+			set
+			{
+				output = value;
 				UpdateTree();
 			}
 		}
 
-		// what happens when this trigger occours
-		public string Event
+		public string TargetEntity
 		{
-			get { return _event; }
+			get { return targetEntity; }
 			set
 			{
-				_event = value;
+				targetEntity = value;
+				UpdateTree();
+			}
+		}
+
+		public string Input
+		{
+			get { return input; }
+			set
+			{
+				input = value;
+				UpdateTree();
+			}
+		}
+
+		public float Delay
+		{
+			get { return delay; }
+			set
+			{
+				delay = value;
+				UpdateTree();
+			}
+		}
+
+		public int TimesToFire
+		{
+			get { return timesToFire; }
+			set
+			{
+				timesToFire = value;
+				UpdateTree();
+			}
+		}
+
+		public string Parameter
+		{
+			get { return parameter; }
+			set
+			{
+				parameter = value;
 				UpdateTree();
 			}
 		}
@@ -38,13 +86,25 @@ namespace BrakeMyMap
 		{
 			connection = val;
 			output = val.Key;
-			_event = val.Value.ToString();
+			// TODO: this split token can change per engine version
+			string[] parts = val.Value.ToString().Split('\x1b');
+
+
+			// parse the input
+			TargetEntity = parts[0];
+			input = parts[1];
+			parameter = parts[2];
+			delay = float.Parse(parts[3]);
+			timesToFire = int.Parse(parts[4]);
+
 		}
 
 		private void UpdateTree()
 		{
 			connection.Key = Output;
-			connection.Value.ToVValue().Value = _event;
+
+			connection.Value.ToVValue().Value = string.Format("{1}{0}{2}{0}{3}{0}{4}{0}{5}", '\x1b', TargetEntity, input,
+				parameter, delay, timesToFire);
 		}
 	}
 }
