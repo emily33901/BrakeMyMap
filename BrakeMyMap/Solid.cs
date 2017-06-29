@@ -3,38 +3,55 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gameloop.Vdf;
+using BrakeMyMap;
 
 namespace BrakeMyMap
 {
 	class Solid
 	{
 
-		public List<Side> Sides { get; set; }
+		public List<Side> Sides { get; private set; }
 
-		public Solid()
+		private VObject solid;
+
+		public Solid(VObject sol)
 		{
+			solid = sol;
 			Sides = new List<Side>();
-		}
 
+			// get the sides and add them here
 
-		public Side TopSide()
-		{
-			Side bestSide = Sides[0];
-
-			foreach(var side in Sides)
+			foreach (var child in solid.Children())
 			{
-				if(side.Plane.IsHorizontal())
+				if (child.Key == "side")
 				{
-					if(side.Plane.BottomLeft[2] > bestSide.Plane.BottomLeft[2])
-					{
-						// change the best side
-						bestSide = side;
-					}
+					// this is a side add it
+					Sides.Add(new Side(child.ToVObject()));
 				}
 			}
-
-			return bestSide;
 		}
 
+		public Side TopSide
+		{
+			get
+			{
+				Side bestSide = Sides[0];
+
+				foreach (var side in Sides)
+				{
+					if (side.Plane.IsHorizontal())
+					{
+						if (side.Plane.BottomLeft[2] > bestSide.Plane.BottomLeft[2])
+						{
+							// change the best side
+							bestSide = side;
+						}
+					}
+				}
+
+				return bestSide;
+			}
+		}
 	}
 }
